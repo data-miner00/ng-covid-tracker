@@ -1,3 +1,5 @@
+// confirmed, recovered and deaths of the api have same structure
+
 export default interface Confirmed {
   provinceState?: string;
   countryRegion: string;
