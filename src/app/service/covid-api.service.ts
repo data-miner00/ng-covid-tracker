@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import Confirmed from '../interfaces/Confirmed';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CovidApiService {
-  private COVID_URLS: Object = {
+  // url endpoints
+  private COVID_URLS = {
     ROOT: 'https://covid19.mathdro.id/api',
     TOTAL_CONFIRMED: 'https://covid19.mathdro.id/api/confirmed',
     TOTAL_RECOVERED: 'https://covid19.mathdro.id/api/recovered',
@@ -20,5 +23,9 @@ export class CovidApiService {
     },
   };
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  getConfirmed(): Observable<Confirmed[]> {
+    return this.http.get<Confirmed[]>(this.COVID_URLS.TOTAL_CONFIRMED);
+  }
 }
