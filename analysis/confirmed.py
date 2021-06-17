@@ -1,3 +1,9 @@
+'''
+Endpoint analysis:
+Analysis of https://covid19.mathdro.id/api/confirmed
+'''
+
+
 import pandas as pd
 
 df = pd.read_json('./data/confirmed.json')
