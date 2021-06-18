@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Confirmed from '../interfaces/Confirmed';
+import DailyAccordingDate from '../interfaces/DailyAccordingDate';
+import Countries from '../interfaces/Countries';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +29,15 @@ export class CovidApiService {
 
   getConfirmed(): Observable<Confirmed[]> {
     return this.http.get<Confirmed[]>(this.COVID_URLS.TOTAL_CONFIRMED);
+  }
+
+  getDailyAccordingDate(date: string): Observable<DailyAccordingDate[]> {
+    return this.http.get<DailyAccordingDate[]>(
+      this.COVID_URLS.DAILY_TIME_SERIES(date)
+    );
+  }
+
+  getCountries(): Observable<Countries> {
+    return this.http.get<Countries>(this.COVID_URLS.COUNTRIES);
   }
 }
