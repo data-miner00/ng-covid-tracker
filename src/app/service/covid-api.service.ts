@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import Confirmed from '../interfaces/Confirmed';
 import DailyAccordingDate from '../interfaces/DailyAccordingDate';
 import Countries from '../interfaces/Countries';
+import TotalAccordingCountry from '../interfaces/TotalAccordingCountry';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +40,11 @@ export class CovidApiService {
 
   getCountries(): Observable<Countries> {
     return this.http.get<Countries>(this.COVID_URLS.COUNTRIES);
+  }
+
+  getTotalByCountry(countryName: string): Observable<TotalAccordingCountry> {
+    return this.http.get<TotalAccordingCountry>(
+      this.COVID_URLS.COUNTRY_DETAIL(countryName)
+    );
   }
 }
