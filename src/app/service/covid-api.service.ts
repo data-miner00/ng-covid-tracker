@@ -5,6 +5,7 @@ import Confirmed from '../interfaces/Confirmed';
 import DailyAccordingDate from '../interfaces/DailyAccordingDate';
 import Countries from '../interfaces/Countries';
 import TotalAccordingCountry from '../interfaces/TotalAccordingCountry';
+import General from '../interfaces/General';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,10 @@ export class CovidApiService {
   };
 
   constructor(private http: HttpClient) {}
+
+  getGeneralInfo(): Observable<General> {
+    return this.http.get<General>(this.COVID_URLS.ROOT);
+  }
 
   getConfirmed(): Observable<Confirmed[]> {
     return this.http.get<Confirmed[]>(this.COVID_URLS.TOTAL_CONFIRMED);
