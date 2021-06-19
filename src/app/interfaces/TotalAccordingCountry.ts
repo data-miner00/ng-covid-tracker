@@ -1,11 +1,11 @@
 export default interface TotalAccordingCountry {
-  confirmed: AccordingDetails;
-  recovered: AccordingDetails;
-  deaths: AccordingDetails;
+  confirmed: ResultDetails;
+  recovered: ResultDetails;
+  deaths: ResultDetails;
   lastUpdate: string;
 }
 
-export interface AccordingDetails {
+export interface ResultDetails {
   value: number;
   detail: string;
 }
