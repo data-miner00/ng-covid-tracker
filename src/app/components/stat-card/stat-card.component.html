@@ -1,0 +1,18 @@
+<div class="card mb-3">
+  <div class="card-content has-text-centered">
+    <h3 class="is-3 subtitle">{{ heading }}</h3>
+    <p class="is-1 title mb-3">{{ numberOfCasesStr }}</p>
+    <p>(+ {{ newCasesStr }})</p>
+    <p class="delta" [style.color]="color">
+      <svg
+        height="20"
+        viewBox="0 0 60 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M29.5 9L47.2535 39.75H11.7465L29.5 9Z" [attr.fill]="color" />
+      </svg>
+      {{ delta }}%
+    </p>
+  </div>
+</div>
