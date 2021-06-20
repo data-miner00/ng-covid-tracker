@@ -3,6 +3,7 @@ import Confirmed from 'src/app/interfaces/Confirmed';
 import { CovidApiService } from 'src/app/service/covid-api.service';
 import { EChartsOption } from 'echarts';
 import globalStatsBar from 'src/app/charts/global-stats-bar';
+import globalSvenDaysAvgLine from 'src/app/charts/global-sven-days-avg-line';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,12 @@ import globalStatsBar from 'src/app/charts/global-stats-bar';
 export class HomeComponent implements OnInit {
   confirmed: Confirmed[] = [];
   chartOption: EChartsOption;
+  globalLineChart: EChartsOption;
 
   constructor(private covidApiService: CovidApiService) {}
 
   ngOnInit(): void {
     this.chartOption = globalStatsBar(178673297, 163197981, 3868612);
+    this.globalLineChart = globalSvenDaysAvgLine(['']);
   }
 }

@@ -1,11 +1,64 @@
-<!-- <section class="section">
+<section class="section">
   <div class="container">
-
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-7-desktop is-12-mobile">
+        <div class="columns">
+          <div class="column is-5">
+            <div>
+              <img id="covid-illustration" src="assets/covid.png" alt="" />
+            </div>
+          </div>
+          <div class="column is-7">
+            <h1 class="is-size-1 title">Coronavirus Alert</h1>
+            <p class="subtitle mt-4 para">
+              A pandemic that started wreaking havoc to earthlings since the
+              year-end of 2019 and continues its massacre till this day.
+            </p>
+            <div>
+              <button class="button is-primary is-medium">
+                Know what I can do
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-5-desktop is-12-mobile">
+        <app-stat-card
+          [heading]="'Total Confirmed'"
+          [numberOfCases]="123432"
+          [newCases]="4533"
+          [delta]="2.5"
+          [color]="'#FF9800'"
+        ></app-stat-card>
+        <app-stat-card
+          [heading]="'Total Recovered'"
+          [numberOfCases]="123432"
+          [newCases]="4533"
+          [delta]="2.5"
+          [color]="'#23e200'"
+        ></app-stat-card>
+        <app-stat-card
+          [heading]="'Total Deaths'"
+          [numberOfCases]="123432"
+          [newCases]="4533"
+          [delta]="2.5"
+          [color]="'crimson'"
+        ></app-stat-card>
+      </div>
+    </div>
   </div>
-</section> -->
+</section>
 
 <section class="section">
   <div class="container">
-    <div echarts [options]="chartOption" class="demo-chart"></div>
+    <h1 class="is-size-3 has-text-centered title">Graphical Representation</h1>
+    <div class="colmuns">
+      <div class="column is-6-desktop">
+        <div echarts [options]="chartOption" class="demo-chart"></div>
+      </div>
+      <div class="column is-6-desktop">
+        <div echarts [options]="globalLineChart" class="demo-chart"></div>
+      </div>
+    </div>
   </div>
 </section>
