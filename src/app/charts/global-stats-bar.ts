@@ -30,6 +30,9 @@ export default (
       },
       show: true,
     },
+    tooltip: {
+      trigger: 'axis',
+    },
     series: [
       {
         data: [

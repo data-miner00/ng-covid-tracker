@@ -1,6 +1,10 @@
 import { EChartsOption } from 'echarts';
 
-export default (dates: string[]): EChartsOption => {
+export default (
+  dates: string[],
+  confirmed: number[],
+  deaths: number[]
+): EChartsOption => {
   return {
     title: {
       text: 'New cases for the past 7 days',
@@ -28,6 +32,8 @@ export default (dates: string[]): EChartsOption => {
     legend: {
       right: 0,
     },
-    tooltip: {},
+    tooltip: {
+      trigger: 'axis',
+    },
   };
 };
