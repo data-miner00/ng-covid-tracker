@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts/core';
 
@@ -50,6 +50,7 @@ echarts.use([
       echarts,
     }),
     FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
