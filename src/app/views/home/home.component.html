@@ -52,13 +52,46 @@
 <section class="section">
   <div class="container">
     <h1 class="is-size-3 has-text-centered title">Graphical Representation</h1>
-    <div class="columns is-centered">
-      <div class="column is-6-desktop">
+    <div class="columns is-centered graphs-container">
+      <div class="column is-6-desktop is-12-mobile">
         <div echarts [options]="chartOption" class="demo-chart"></div>
       </div>
-      <div class="column is-6-desktop">
+      <div class="column is-6-desktop is-12-mobile">
         <div echarts [options]="globalLineChart" class="demo-chart"></div>
       </div>
+    </div>
+    <p class="has-text-right is-size-6 has-text-grey">
+      <fa-icon [icon]="faCheckCircle" [ngStyle]="{ color: 'green' }"></fa-icon>
+      <span class="is-italic ml-1"
+        >Last updated on June 20th 2021, 4:21:11 pm</span
+      >
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h1 class="has-text-left is-size-3 title">
+      Statistical Breakdown Based on Country
+    </h1>
+    <div class="columns">
+      <div class="column is-5-desktop">
+        <div class="country-select">
+          <h3 class="is-text-4 title">Select a country</h3>
+          <div class="field">
+            <div class="control">
+              <div class="select is-dark">
+                <select [(ngModel)]="selectedCountry">
+                  <option *ngFor="let country of countries" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-5-desktop"></div>
     </div>
   </div>
 </section>

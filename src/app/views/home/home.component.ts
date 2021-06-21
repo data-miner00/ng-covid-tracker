@@ -14,11 +14,13 @@ import countryNames from 'src/data/country-array.json';
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-  confirmed: Confirmed[] = [];
   chartOption: EChartsOption;
   globalLineChart: EChartsOption;
+
   faCheckCircle: IconDefinition = faCheckCircle;
+
   countries: string[] = countryNames;
+  selectedCountry: string = 'Malaysia';
 
   constructor(private covidApiService: CovidApiService) {}
 
