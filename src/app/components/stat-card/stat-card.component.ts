@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { numberWithCommas } from 'src/app/utils';
 
 @Component({
   selector: 'app-stat-card',
@@ -17,12 +18,8 @@ export class StatCardComponent implements OnInit {
 
   constructor() {}
 
-  numberWithCommas(x: number): string {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  }
-
   ngOnInit(): void {
-    this.numberOfCasesStr = this.numberWithCommas(this.numberOfCases);
-    this.newCasesStr = this.numberWithCommas(this.newCases);
+    this.numberOfCasesStr = numberWithCommas(this.numberOfCases);
+    this.newCasesStr = numberWithCommas(this.newCases);
   }
 }
