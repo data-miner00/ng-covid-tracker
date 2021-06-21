@@ -24,6 +24,7 @@ import {
 
 import { CanvasRenderer } from 'echarts/renderers';
 import { StatCardVarComponent } from './components/stat-card-var/stat-card-var.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 echarts.use([
   TitleComponent,
@@ -43,6 +44,7 @@ echarts.use([
     HeaderComponent,
     StatCardComponent,
     StatCardVarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
