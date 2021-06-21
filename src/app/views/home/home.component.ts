@@ -7,6 +7,7 @@ import globalSvenDaysAvgLine from 'src/app/charts/global-sven-days-avg-line';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import countryNames from 'src/data/country-array.json';
+import countryDistPie from 'src/app/charts/country-dist-pie';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import countryNames from 'src/data/country-array.json';
 export class HomeComponent implements OnInit {
   chartOption: EChartsOption;
   globalLineChart: EChartsOption;
+  countryDistChart: EChartsOption;
 
   faCheckCircle: IconDefinition = faCheckCircle;
 
@@ -27,5 +29,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.chartOption = globalStatsBar(178673297, 163197981, 3868612);
     this.globalLineChart = globalSvenDaysAvgLine([''], [], []);
+    this.countryDistChart = countryDistPie(
+      this.selectedCountry,
+      696408,
+      4408,
+      628185
+    );
+  }
+
+  onCountryChange(): void {
+    console.log(this.selectedCountry);
+    // this.countryDistChart = countryDistPie(
+    //   this.selectedCountry,
+    //   70000,
+    //   100,
+    //   59966
+    // );
   }
 }

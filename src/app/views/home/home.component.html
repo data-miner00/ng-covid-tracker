@@ -71,17 +71,20 @@
 
 <section class="section">
   <div class="container">
-    <h1 class="has-text-left is-size-3 title">
+    <h1 class="has-text-centered is-size-3 title pb-6">
       Statistical Breakdown Based on Country
     </h1>
-    <div class="columns">
+    <div class="columns is-vcentered is-centered">
       <div class="column is-5-desktop">
         <div class="country-select">
-          <h3 class="is-text-4 title">Select a country</h3>
+          <h3 class="is-size-4 title">Select a country</h3>
           <div class="field">
             <div class="control">
               <div class="select is-dark">
-                <select [(ngModel)]="selectedCountry">
+                <select
+                  [(ngModel)]="selectedCountry"
+                  (change)="onCountryChange()"
+                >
                   <option *ngFor="let country of countries" [value]="country">
                     {{ country }}
                   </option>
@@ -89,9 +92,35 @@
               </div>
             </div>
           </div>
+          <button class="button">View stats</button>
         </div>
       </div>
-      <div class="column is-5-desktop"></div>
+      <div class="column is-5-desktop">
+        <div echarts [options]="countryDistChart" class="pie-chart"></div>
+      </div>
+    </div>
+    <div class="columns py-1 is-centered">
+      <app-stat-card-var
+        class="column is-3-desktop"
+        [heading]="'Confirmed'"
+        [numberOfCases]="1022213"
+        [newCases]="4545"
+        [color]="'#FF9800'"
+      ></app-stat-card-var>
+      <app-stat-card-var
+        class="column is-3-desktop"
+        [heading]="'Deaths'"
+        [numberOfCases]="100"
+        [newCases]="4"
+        [color]="'#23e200'"
+      ></app-stat-card-var>
+      <app-stat-card-var
+        class="column is-3-desktop"
+        [heading]="'Confirmed'"
+        [numberOfCases]="900909"
+        [newCases]="4545"
+        [color]="'crimson'"
+      ></app-stat-card-var>
     </div>
   </div>
 </section>
