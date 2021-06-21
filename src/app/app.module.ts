@@ -23,6 +23,7 @@ import {
 } from 'echarts/components';
 
 import { CanvasRenderer } from 'echarts/renderers';
+import { StatCardVarComponent } from './components/stat-card-var/stat-card-var.component';
 
 echarts.use([
   TitleComponent,
@@ -41,6 +42,7 @@ echarts.use([
     HomeComponent,
     HeaderComponent,
     StatCardComponent,
+    StatCardVarComponent,
   ],
   imports: [
     BrowserModule,
