@@ -11,6 +11,7 @@ export class StatCardVarComponent implements OnInit {
   @Input() numberOfCases: number;
   @Input() newCases: number;
   @Input() delta: number;
+  @Input() color: string;
 
   numberOfCasesStr: string;
   newCasesStr: string;
