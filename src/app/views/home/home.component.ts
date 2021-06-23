@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import Confirmed from 'src/app/interfaces/Confirmed';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CovidApiService } from 'src/app/services/covid-api.service';
 import { EChartsOption } from 'echarts';
 import globalStatsBar from 'src/app/charts/global-stats-bar';
@@ -21,7 +20,7 @@ import {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   globalConfirmed: number = 0;
   globalRecovered: number = 0;
   globalDeaths: number = 0;
@@ -31,9 +30,9 @@ export class HomeComponent implements OnInit {
   globalRecoveredYesterday: number = 0;
   globalDeathsYesterday: number = 0;
 
-  globalNewConfirmed: string;
-  globalNewRecovered: string;
-  globalNewDeaths: string;
+  globalNewConfirmed: number;
+  globalNewRecovered: number;
+  globalNewDeaths: number;
 
   globalNewConfirmedDelta: string;
   globalNewRecoveredDelta: string = '323fjusa';
@@ -52,6 +51,11 @@ export class HomeComponent implements OnInit {
   countries: string[] = countryNames;
   selectedCountry: string = 'Malaysia';
 
+  selectedCountryConfirmed: string;
+  selectedCountryRecovered: string;
+  selectedCountryDeaths: string;
+  selectedCountryLastUpdate: string;
+
   constructor(private covidApiService: CovidApiService) {}
 
   ngOnInit(): void {
@@ -68,7 +72,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.covidApiService
-      .getDailyAccordingDate(getFormattedDateForAPI(1))
+      .getDailyAccordingDate(getFormattedDateForAPI(2))
       .subscribe((dailys) => {
         dailys.forEach((daily) => {
           this.globalConfirmedYesterday += Number(daily.confirmed);
@@ -76,15 +80,13 @@ export class HomeComponent implements OnInit {
           this.globalDeathsYesterday += Number(daily.deaths);
         });
 
-        this.globalNewConfirmed = numberWithCommas(
-          this.globalConfirmed - this.globalConfirmedYesterday
-        );
-        this.globalNewRecovered = numberWithCommas(
-          this.globalRecovered - this.globalRecoveredYesterday
-        );
-        this.globalNewDeaths = numberWithCommas(
-          this.globalDeaths - this.globalDeathsYesterday
-        );
+        this.globalNewConfirmed =
+          this.globalConfirmed - this.globalConfirmedYesterday;
+
+        this.globalNewRecovered =
+          this.globalRecovered - this.globalRecoveredYesterday;
+
+        this.globalNewDeaths = this.globalDeaths - this.globalDeathsYesterday;
 
         this.globalNewConfirmedDelta = calculateDelta(
           this.globalConfirmed,
@@ -109,22 +111,33 @@ export class HomeComponent implements OnInit {
         );
       });
 
+    this.fetchCountryData();
+
     this.globalLineChart = globalSvenDaysAvgLine([''], [], []);
-    this.countryDistChart = countryDistPie(
-      this.selectedCountry,
-      696408,
-      4408,
-      628185
-    );
   }
 
   onCountryChange(): void {
     console.log(this.selectedCountry);
-    // this.countryDistChart = countryDistPie(
-    //   this.selectedCountry,
-    //   70000,
-    //   100,
-    //   59966
-    // );
+    this.fetchCountryData();
   }
+
+  fetchCountryData(): void {
+    this.covidApiService
+      .getTotalByCountry(this.selectedCountry)
+      .subscribe(({ confirmed, recovered, deaths, lastUpdate }) => {
+        this.selectedCountryConfirmed = numberWithCommas(confirmed.value);
+        this.selectedCountryRecovered = numberWithCommas(recovered.value);
+        this.selectedCountryDeaths = numberWithCommas(deaths.value);
+        this.selectedCountryLastUpdate = lastUpdate;
+
+        this.countryDistChart = countryDistPie(
+          this.selectedCountry,
+          confirmed.value,
+          deaths.value,
+          recovered.value
+        );
+      });
+  }
+
+  ngOnDestroy(): void {}
 }
