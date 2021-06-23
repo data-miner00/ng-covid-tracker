@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.selectedCountryConfirmed = numberWithCommas(confirmed.value);
         this.selectedCountryRecovered = numberWithCommas(recovered.value);
         this.selectedCountryDeaths = numberWithCommas(deaths.value);
-        this.selectedCountryLastUpdate = lastUpdate;
+        this.selectedCountryLastUpdate = getFormattedDateForDisplay(lastUpdate);
 
         this.countryDistChart = countryDistPie(
           this.selectedCountry,
