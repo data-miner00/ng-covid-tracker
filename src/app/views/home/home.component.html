@@ -69,14 +69,14 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section stats">
   <div class="container">
     <h1 class="has-text-centered is-size-3 title pb-6">
       Statistical Breakdown Based on Country
     </h1>
     <div class="columns is-vcentered is-centered">
       <div class="column is-5-desktop">
-        <div class="country-select">
+        <div class="country-select has-background-white card">
           <h3 class="is-size-4 title">Select a country</h3>
           <div class="field">
             <div class="control">
@@ -92,7 +92,7 @@
               </div>
             </div>
           </div>
-          <button class="button">View stats</button>
+          <button class="button is-primary">View stats</button>
         </div>
       </div>
       <div class="column is-5-desktop">
@@ -121,6 +121,26 @@
         [newCases]="25"
         [color]="'crimson'"
       ></app-stat-card-var>
+    </div>
+    <p class="has-text-right is-size-6 has-text-grey">
+      <fa-icon [icon]="faCheckCircle" [ngStyle]="{ color: 'green' }"></fa-icon>
+      <span class="is-italic ml-1"
+        >Last updated on June 20th 2021, 4:21:11 pm</span
+      >
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="has-text-centered">
+    <div class="para-container mx-auto pb-6">
+      <h1 class="is-size-3 title pb-6">Extra Notes</h1>
+      <p>
+        Ths data is supplied by
+        <a href="https://covid19.mathdro.id">Mathdroid COVID-19 API</a>, a
+        wrapper API that serves data from John Hopkins University CSSE. Please
+        note that all the new cases are the cases reported from yesterday.
+      </p>
     </div>
   </div>
 </section>
