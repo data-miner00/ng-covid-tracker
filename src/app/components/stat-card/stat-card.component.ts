@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { numberWithCommas } from 'src/app/utils';
 
 @Component({
@@ -6,7 +6,7 @@ import { numberWithCommas } from 'src/app/utils';
   templateUrl: './stat-card.component.html',
   styleUrls: ['./stat-card.component.sass'],
 })
-export class StatCardComponent implements OnInit {
+export class StatCardComponent implements OnInit, OnChanges {
   @Input() heading: string;
   @Input() numberOfCases: number;
   @Input() newCases: number;
@@ -21,6 +21,10 @@ export class StatCardComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.numberOfCases);
     this.numberOfCasesStr = numberWithCommas(this.numberOfCases);
+    this.newCasesStr = numberWithCommas(this.newCases);
+  }
+
+  ngOnChanges(): void {
     this.newCasesStr = numberWithCommas(this.newCases);
   }
 }
