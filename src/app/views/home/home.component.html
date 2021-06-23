@@ -25,23 +25,23 @@
       <div class="column is-5-desktop is-12-mobile">
         <app-stat-card
           [heading]="'Total Confirmed'"
-          [numberOfCases]="123432"
-          [newCases]="4533"
-          [delta]="2.5"
+          [numberOfCases]="globalConfirmed"
+          [newCases]="globalNewConfirmed"
+          [delta]="globalNewConfirmedDelta"
           [color]="'#FF9800'"
         ></app-stat-card>
         <app-stat-card
           [heading]="'Total Recovered'"
-          [numberOfCases]="123432"
-          [newCases]="4533"
-          [delta]="2.5"
+          [numberOfCases]="globalRecovered"
+          [newCases]="globalNewRecovered"
+          [delta]="globalNewRecoveredDelta"
           [color]="'#23e200'"
         ></app-stat-card>
         <app-stat-card
           [heading]="'Total Deaths'"
-          [numberOfCases]="123432"
-          [newCases]="4533"
-          [delta]="2.5"
+          [numberOfCases]="globalDeaths"
+          [newCases]="globalNewDeaths"
+          [delta]="globalNewDeathsDelta"
           [color]="'crimson'"
         ></app-stat-card>
       </div>
