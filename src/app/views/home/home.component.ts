@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Confirmed from 'src/app/interfaces/Confirmed';
-import { CovidApiService } from 'src/app/service/covid-api.service';
+import { CovidApiService } from 'src/app/services/covid-api.service';
 import { EChartsOption } from 'echarts';
 import globalStatsBar from 'src/app/charts/global-stats-bar';
 import globalSvenDaysAvgLine from 'src/app/charts/global-sven-days-avg-line';
@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
         .getDailyAccordingDate(getFormattedDateForAPI(1))
         .subscribe((dailys) => {
           dailys.forEach((daily) => {
-            console.log(daily.confirmed);
             this.globalConfirmedYesterday += Number(daily.confirmed);
             this.globalRecoveredYesterday += Number(daily.recovered);
             this.globalDeathsYesterday += Number(daily.deaths);

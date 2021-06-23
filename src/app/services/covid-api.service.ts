@@ -53,9 +53,4 @@ export class CovidApiService {
       this.COVID_URLS.COUNTRY_DETAIL(countryName)
     );
   }
-
-  // Calculation
-  supplyDataForHome() {
-    this.getGeneralInfo().subscribe((info) => {});
-  }
 }
