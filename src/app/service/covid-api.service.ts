@@ -29,6 +29,7 @@ export class CovidApiService {
 
   constructor(private http: HttpClient) {}
 
+  // Simple API calls
   getGeneralInfo(): Observable<General> {
     return this.http.get<General>(this.COVID_URLS.ROOT);
   }
@@ -51,5 +52,10 @@ export class CovidApiService {
     return this.http.get<TotalAccordingCountry>(
       this.COVID_URLS.COUNTRY_DETAIL(countryName)
     );
+  }
+
+  // Calculation
+  supplyDataForHome() {
+    this.getGeneralInfo().subscribe((info) => {});
   }
 }
