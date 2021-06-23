@@ -8,9 +8,9 @@ export default interface DailyAccordingDate {
   lastUpdate: string;
   lat: string;
   long: string;
-  confirmed: number;
-  deaths: number;
-  recovered: number;
+  confirmed: string;
+  deaths: string;
+  recovered: string;
   active: string;
   combinedKey: string;
   incidentRate: string;
