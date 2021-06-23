@@ -19,6 +19,7 @@ export class StatCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    console.log(this.numberOfCases);
     this.numberOfCasesStr = numberWithCommas(this.numberOfCases);
     this.newCasesStr = numberWithCommas(this.newCases);
   }

@@ -7,7 +7,7 @@ export default (
 ): EChartsOption => {
   return {
     title: {
-      text: 'New cases for the past 7 days',
+      text: 'Daily cases for the past 7 days',
     },
     xAxis: {
       type: 'category',
