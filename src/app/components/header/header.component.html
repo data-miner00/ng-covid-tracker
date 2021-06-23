@@ -3,21 +3,23 @@
 <header class="header navbar is-fixed-top is-primary">
   <div class="container">
     <div class="header__logo navbar-brand">
-      <a class="navbar-item is-uppercase is-size-4 has-text-white">covid-19</a>
-      <a class="navbar-burger" id="burger">
+      <a
+        href=""
+        class="navbar-item is-uppercase is-size-4 has-text-white"
+        title="Home"
+        >covid-19</a
+      >
+      <a class="navbar-burger" id="burger" #burger>
         <span></span>
         <span></span>
         <span></span>
       </a>
     </div>
 
-    <nav class="header__navs navbar-menu navbar-end" id="nav-links">
-      <a href="#" class="header__navs__link navbar-item">About</a>
-      <a href="#" class="header__navs__link navbar-item">Prevention</a>
-      <a href="#" class="header__navs__link navbar-item">Country</a>
-      <a href="#" class="header__navs__link navbar-item">Vaccine</a>
-      <a href="#" class="header__navs__link navbar-item">News</a>
-      <a href="#" class="header__navs__link navbar-item">Auxillary</a>
+    <nav class="header__navs navbar-menu navbar-end" id="nav-links" #navlinks>
+      <a href="" class="header__navs__link navbar-item is-active">Home</a>
+      <a href="info" class="header__navs__link navbar-item">Information</a>
+      <a href="about" class="header__navs__link navbar-item">About this</a>
     </nav>
   </div>
 </header>
