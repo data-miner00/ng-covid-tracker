@@ -23,7 +23,74 @@
         </div>
       </div>
       <div class="column is-5-desktop is-12-mobile">
-        <app-stat-card
+        <!--  card component-->
+        <div class="card mb-3">
+          <div class="card-content has-text-centered">
+            <h3 class="is-3 subtitle">Total Confirmed</h3>
+            <p class="is-1 title mb-3">{{ globalConfirmedStr }}</p>
+            <p>(+ {{ globalNewConfirmed }})</p>
+            <p class="delta" color="#FF9800">
+              <svg
+                height="20"
+                viewBox="0 0 60 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.5 9L47.2535 39.75H11.7465L29.5 9Z"
+                  fill="#FF9800"
+                />
+              </svg>
+              {{ globalNewConfirmedDelta }}%
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-content has-text-centered">
+            <h3 class="is-3 subtitle">Total Recovered</h3>
+            <p class="is-1 title mb-3">{{ globalRecoveredStr }}</p>
+            <p>(+ {{ globalNewRecovered }})</p>
+            <p class="delta" color="#23e200">
+              <svg
+                height="20"
+                viewBox="0 0 60 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.5 9L47.2535 39.75H11.7465L29.5 9Z"
+                  fill="#23e200"
+                />
+              </svg>
+              {{ globalNewRecoveredDelta }}%
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-content has-text-centered">
+            <h3 class="is-3 subtitle">Total Deaths</h3>
+            <p class="is-1 title mb-3">{{ globalDeathsStr }}</p>
+            <p>(+ {{ globalNewDeaths }})</p>
+            <p class="delta" color="crimson">
+              <svg
+                height="20"
+                viewBox="0 0 60 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.5 9L47.2535 39.75H11.7465L29.5 9Z"
+                  fill="crimson"
+                />
+              </svg>
+              {{ globalNewDeathsDelta }}%
+            </p>
+          </div>
+        </div>
+
+        <!-- Bugged card components 
+         ======================================================== -->
+        <!-- <app-stat-card
           [heading]="'Total Confirmed'"
           [numberOfCases]="globalConfirmed"
           [newCases]="globalNewConfirmed"
@@ -43,7 +110,7 @@
           [newCases]="globalNewDeaths"
           [delta]="globalNewDeathsDelta"
           [color]="'crimson'"
-        ></app-stat-card>
+        ></app-stat-card> -->
       </div>
     </div>
   </div>
@@ -62,9 +129,7 @@
     </div>
     <p class="has-text-right is-size-6 has-text-grey">
       <fa-icon [icon]="faCheckCircle" [ngStyle]="{ color: 'green' }"></fa-icon>
-      <span class="is-italic ml-1"
-        >Last updated on June 20th 2021, 4:21:11 pm</span
-      >
+      <span class="is-italic ml-1">Last updated on {{ globalLastUpdate }}</span>
     </p>
   </div>
 </section>

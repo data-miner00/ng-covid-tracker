@@ -8,6 +8,8 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import countryNames from 'src/data/country-array.json';
 import countryDistPie from 'src/app/charts/country-dist-pie';
+import { numberWithCommas } from 'src/app/utils';
+
 import {
   getFormattedDateForDisplay,
   getFormattedDateForAPI,
@@ -20,22 +22,26 @@ import {
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-  globalConfirmed: number;
-  globalRecovered: number;
-  globalDeaths: number;
+  globalConfirmed: number = 0;
+  globalRecovered: number = 0;
+  globalDeaths: number = 0;
   globalLastUpdate: string;
 
   globalConfirmedYesterday: number = 0;
   globalRecoveredYesterday: number = 0;
   globalDeathsYesterday: number = 0;
 
-  globalNewConfirmed: number;
-  globalNewRecovered: number;
-  globalNewDeaths: number;
+  globalNewConfirmed: string;
+  globalNewRecovered: string;
+  globalNewDeaths: string;
 
   globalNewConfirmedDelta: string;
-  globalNewRecoveredDelta: string;
+  globalNewRecoveredDelta: string = '323fjusa';
   globalNewDeathsDelta: string;
+
+  globalConfirmedStr: string;
+  globalRecoveredStr: string;
+  globalDeathsStr: string;
 
   chartOption: EChartsOption;
   globalLineChart: EChartsOption;
@@ -56,44 +62,52 @@ export class HomeComponent implements OnInit {
       this.globalDeaths = general.deaths.value;
       this.globalLastUpdate = getFormattedDateForDisplay(general.lastUpdate);
 
-      this.covidApiService
-        .getDailyAccordingDate(getFormattedDateForAPI(1))
-        .subscribe((dailys) => {
-          dailys.forEach((daily) => {
-            this.globalConfirmedYesterday += Number(daily.confirmed);
-            this.globalRecoveredYesterday += Number(daily.recovered);
-            this.globalDeathsYesterday += Number(daily.deaths);
-          });
-
-          this.globalNewConfirmed =
-            this.globalConfirmed - this.globalConfirmedYesterday;
-          this.globalNewRecovered =
-            this.globalRecovered - this.globalRecoveredYesterday;
-          this.globalNewDeaths = this.globalDeaths - this.globalDeathsYesterday;
-
-          this.globalNewConfirmedDelta = calculateDelta(
-            this.globalConfirmed,
-            this.globalConfirmedYesterday
-          );
-          this.globalNewRecoveredDelta = calculateDelta(
-            this.globalRecovered,
-            this.globalRecoveredYesterday
-          );
-          this.globalNewDeathsDelta = calculateDelta(
-            this.globalDeaths,
-            this.globalDeathsYesterday
-          );
-          console.log(this.globalConfirmedYesterday);
-          console.log(this.globalNewConfirmed);
-          console.log(this.globalNewConfirmedDelta);
-
-          this.chartOption = globalStatsBar(
-            this.globalConfirmed,
-            this.globalRecovered,
-            this.globalDeaths
-          );
-        });
+      this.globalConfirmedStr = numberWithCommas(general.confirmed.value);
+      this.globalRecoveredStr = numberWithCommas(general.recovered.value);
+      this.globalDeathsStr = numberWithCommas(general.deaths.value);
     });
+
+    this.covidApiService
+      .getDailyAccordingDate(getFormattedDateForAPI(1))
+      .subscribe((dailys) => {
+        dailys.forEach((daily) => {
+          this.globalConfirmedYesterday += Number(daily.confirmed);
+          this.globalRecoveredYesterday += Number(daily.recovered);
+          this.globalDeathsYesterday += Number(daily.deaths);
+        });
+
+        this.globalNewConfirmed = numberWithCommas(
+          this.globalConfirmed - this.globalConfirmedYesterday
+        );
+        this.globalNewRecovered = numberWithCommas(
+          this.globalRecovered - this.globalRecoveredYesterday
+        );
+        this.globalNewDeaths = numberWithCommas(
+          this.globalDeaths - this.globalDeathsYesterday
+        );
+
+        this.globalNewConfirmedDelta = calculateDelta(
+          this.globalConfirmed,
+          this.globalConfirmedYesterday
+        );
+        this.globalNewRecoveredDelta = calculateDelta(
+          this.globalRecovered,
+          this.globalRecoveredYesterday
+        );
+        this.globalNewDeathsDelta = calculateDelta(
+          this.globalDeaths,
+          this.globalDeathsYesterday
+        );
+        console.log(this.globalConfirmedYesterday);
+        console.log(this.globalNewConfirmed);
+        console.log(this.globalNewConfirmedDelta);
+
+        this.chartOption = globalStatsBar(
+          this.globalConfirmed,
+          this.globalRecovered,
+          this.globalDeaths
+        );
+      });
 
     this.globalLineChart = globalSvenDaysAvgLine([''], [], []);
     this.countryDistChart = countryDistPie(
