@@ -14,8 +14,8 @@ export default (
       data: [
         'Total confirmed',
         'Total recovered',
-        'Total deaths',
         'Active cases',
+        'Total deaths',
       ],
     },
     yAxis: {
