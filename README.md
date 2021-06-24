@@ -1,4 +1,6 @@
-# CovidTrackerLite
+# Covid Tracker
+
+This is a simple Angular project that consumes COVID-19 API by [Mathdroid](https://github.com/mathdroid/covid-19-api) into display.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
