@@ -27,6 +27,7 @@ import { StatCardVarComponent } from './components/stat-card-var/stat-card-var.c
 import { FooterComponent } from './components/footer/footer.component';
 import { InfoComponent } from './views/info/info.component';
 import { AboutComponent } from './views/about/about.component';
+import { ComingSoonComponent } from './views/coming-soon/coming-soon.component';
 
 echarts.use([
   TitleComponent,
@@ -49,6 +50,7 @@ echarts.use([
     FooterComponent,
     InfoComponent,
     AboutComponent,
+    ComingSoonComponent,
   ],
   imports: [
     BrowserModule,
