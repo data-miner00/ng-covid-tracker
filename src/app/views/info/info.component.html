@@ -14,22 +14,38 @@
       </p>
       <p class="is-size-5">The topics are outlined as follows:</p>
       <ul class="is-size-5 mb-5">
-        <li><a href="#">What is Coronavirus?</a></li>
-        <li><a href="#">What we can do to prevent and stop the chain?</a></li>
+        <li>
+          <a (click)="onClick('what-is-coronavirus')">What is Coronavirus?</a>
+        </li>
+        <li>
+          <a (click)="onClick('what-can-we-do')"
+            >What we can do to prevent and stop the chain?</a
+          >
+        </li>
         <ul>
-          <li><a href="#">Cover Face with Face mask</a></li>
-          <li><a href="#">Social Distancing</a></li>
-          <li><a href="#">Wash Hands Frequently and Effectively</a></li>
-          <li><a href="#">Staying at Home</a></li>
-          <li><a href="#">Get Vaccinated</a></li>
+          <li>
+            <a (click)="onClick('face-mask')">Cover Face with Face mask</a>
+          </li>
+          <li>
+            <a (click)="onClick('social-distancing')">Social Distancing</a>
+          </li>
+          <li>
+            <a (click)="onClick('wash-hands')"
+              >Wash Hands Frequently and Effectively</a
+            >
+          </li>
+          <li><a (click)="onClick('stay-at-home')">Staying at Home</a></li>
+          <li><a (click)="onClick('vaccine')">Get Vaccinated</a></li>
         </ul>
-        <li><a href="#">Symptoms</a></li>
-        <li><a href="#">Reference</a></li>
+        <li><a (click)="onClick('symptoms')">Symptoms</a></li>
+        <li><a (click)="onClick('reference')">Reference</a></li>
       </ul>
     </div>
 
     <div class="info__wrapper__section mb-6">
-      <h1 class="is-size-3 title">What is Coronavirus?</h1>
+      <h1 class="is-size-3 title" id="what-is-coronavirus">
+        What is Coronavirus?
+      </h1>
       <p class="is-size-5 mb-5">
         Coronavirus is a family of viruses that are known to inflicts diseases
         such as <strong>common cold</strong> to more serious respiratory illness
@@ -53,7 +69,7 @@
     </div>
 
     <div class="info__wrapper__section mb-6">
-      <h1 class="is-size-3 title">
+      <h1 class="is-size-3 title" id="what-can-we-do">
         What we can do to prevent and stop the chain?
       </h1>
       <p class="is-size-5 mb-5">
@@ -61,7 +77,7 @@
         and stop the chain altogether.
       </p>
 
-      <h2 class="is-size-4 title">Cover Face with Face mask</h2>
+      <h2 class="is-size-4 title" id="face-mask">Cover Face with Face mask</h2>
       <p class="is-size-5 mb-5">
         Always wear a face mask when heading out to the public. Coronavirus are
         spread mainly through respiratory droplets produced by infected
@@ -85,7 +101,7 @@
         </div>
       </article>
 
-      <h2 class="is-size-4 title">Social Distancing</h2>
+      <h2 class="is-size-4 title" id="social-distancing">Social Distancing</h2>
       <p class="is-size-5 mb-5">
         Wearing mask alone is not enough to combat the virus. It must be paired
         with other safety precaution as well to maximize the effectiveness of
@@ -94,7 +110,9 @@
         social distancing is practically impossible.
       </p>
 
-      <h2 class="is-size-4 title">Wash Hands Frequently and Effectively</h2>
+      <h2 class="is-size-4 title" id="wash-hands">
+        Wash Hands Frequently and Effectively
+      </h2>
       <p class="is-size-5 mb-5">
         Wash hands regularly whenever you can especially out at the public as
         our hands might unknowingly contacted the surface that is
@@ -105,7 +123,7 @@
         detrimental to our health.
       </p>
 
-      <h2 class="is-size-4 title">Staying at Home</h2>
+      <h2 class="is-size-4 title" id="stay-at-home">Staying at Home</h2>
       <p class="is-size-5 mb-5">
         Do not go out unless necessary. Staying at home during this trying
         period not only helps protecting yourself and family members, it also
@@ -121,7 +139,7 @@
         is fulfilled.
       </p>
 
-      <h2 class="is-size-4 title">Get Vaccinated</h2>
+      <h2 class="is-size-4 title" id="vaccination">Get Vaccinated</h2>
       <p class="is-size-5 mb-5">
         Perhaps one of the most <em>compelling way</em> to nip COVID-19 of the
         bud is through the global vaccination movement. By achieving herd
@@ -150,7 +168,7 @@
     </div>
 
     <div class="info__wrapper__section mb-6">
-      <h1 class="is-size-3 title">Symptoms</h1>
+      <h1 class="is-size-3 title" id="symptoms">Symptoms</h1>
       <p class="is-size-5 mb-5">
         The common symptoms of COVID-19 includes
         <u
@@ -199,7 +217,7 @@
       </article>
     </div>
     <div class="info__wrapper__reference">
-      <h2 class="is-size-2 has-text-centered">Reference</h2>
+      <h2 class="is-size-2 has-text-centered" id="reference">Reference</h2>
 
       <div
         class="info__wrapper__reference__item py-4"

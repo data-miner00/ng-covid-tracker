@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-info',
@@ -47,7 +48,11 @@ export class InfoComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private viewportScroller: ViewportScroller) {}
 
   ngOnInit(): void {}
+
+  onClick(elementId: string): void {
+    this.viewportScroller.scrollToAnchor(elementId);
+  }
 }
