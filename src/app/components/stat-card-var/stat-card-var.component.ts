@@ -20,11 +20,10 @@ export class StatCardVarComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.numberOfCasesStr = numberWithCommas(this.numberOfCases);
-    this.newCasesStr = numberWithCommas(this.newCases);
   }
 
   ngOnChanges(): void {
     this.numberOfCasesStr = numberWithCommas(this.numberOfCases);
-    this.newCasesStr = numberWithCommas(this.newCases);
+    if (this.newCases) this.newCasesStr = numberWithCommas(this.newCases);
   }
 }
