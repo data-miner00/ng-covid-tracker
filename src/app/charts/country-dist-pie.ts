@@ -6,6 +6,7 @@ export default (
   deaths: number,
   recovered: number
 ): EChartsOption => {
+  const colorPalette: string[] = ['#648DE5', '#ef6565', '#62929E'];
   return {
     title: {
       text: `Case distribution for ${country}`,
@@ -36,7 +37,7 @@ export default (
           },
         },
         label: {
-          formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+          formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}  {per|{d}%}  ',
           backgroundColor: '#F6F8FC',
           borderColor: '#8C8D8E',
           borderWidth: 1,
@@ -68,8 +69,10 @@ export default (
             },
           },
         },
+        color: colorPalette,
       },
     ],
+
     media: [
       {
         query: {
