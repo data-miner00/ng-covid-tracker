@@ -37,27 +37,27 @@ export default (
       {
         data: [
           {
-            value: confirmed, //178673297,
+            value: confirmed,
             itemStyle: {
-              color: '#FF9800',
+              color: '#ef6565',
             },
           },
           {
-            value: recovered, //163197981,
+            value: recovered,
             itemStyle: {
-              color: '#CCE2CB',
+              color: '#FFc0c0',
             },
           },
           {
-            value: deaths, //3868612,
+            value: confirmed - recovered - deaths,
             itemStyle: {
-              color: '#FF968A',
+              color: '#648DE5',
             },
           },
           {
-            value: confirmed - recovered - deaths, //178673297 - 3868612 - 163197981,
+            value: deaths,
             itemStyle: {
-              color: 'gray',
+              color: '#242331',
             },
           },
         ],
