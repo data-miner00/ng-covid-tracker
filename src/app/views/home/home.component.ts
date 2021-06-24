@@ -55,6 +55,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedCountryRecovered: string;
   selectedCountryDeaths: string;
   selectedCountryLastUpdate: string;
+  selectedCountryNewConfirmed: string;
+  selectedCountryNewRecovered: string;
+  selectedCountryNewDeaths: string;
+  selectedCountryConfirmedVal: number;
+  selectedCountryRecoveredVal: number;
+  selectedCountryDeathsVal: number;
+  selectedCountryRecoveredYesterday: number;
+  selectedCountryConfirmedYesterday: number;
+  selectedCountryDeathsYesterday: number;
 
   constructor(private covidApiService: CovidApiService) {}
 
@@ -78,6 +87,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.globalConfirmedYesterday += Number(daily.confirmed);
           this.globalRecoveredYesterday += Number(daily.recovered);
           this.globalDeathsYesterday += Number(daily.deaths);
+          if (daily.countryRegion === this.selectedCountry) {
+            this.selectedCountryConfirmedYesterday = Number(daily.confirmed);
+            this.selectedCountryRecoveredYesterday = Number(daily.recovered);
+            this.selectedCountryDeathsYesterday = Number(daily.deaths);
+          }
         });
 
         this.globalNewConfirmed =
@@ -100,9 +114,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.globalDeaths,
           this.globalDeathsYesterday
         );
-        console.log(this.globalConfirmedYesterday);
-        console.log(this.globalNewConfirmed);
-        console.log(this.globalNewConfirmedDelta);
 
         this.chartOption = globalStatsBar(
           this.globalConfirmed,
@@ -112,6 +123,20 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
 
     this.fetchCountryData();
+
+    setTimeout(() => {
+      this.selectedCountryNewConfirmed = numberWithCommas(
+        this.selectedCountryConfirmedVal -
+          this.selectedCountryConfirmedYesterday
+      );
+      this.selectedCountryNewRecovered = numberWithCommas(
+        this.selectedCountryRecoveredVal -
+          this.selectedCountryRecoveredYesterday
+      );
+      this.selectedCountryNewDeaths = numberWithCommas(
+        this.selectedCountryDeathsVal - this.selectedCountryDeathsYesterday
+      );
+    }, 3000);
 
     this.globalLineChart = globalSvenDaysAvgLine([''], [], []);
   }
@@ -125,6 +150,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.covidApiService
       .getTotalByCountry(this.selectedCountry)
       .subscribe(({ confirmed, recovered, deaths, lastUpdate }) => {
+        this.selectedCountryConfirmedVal = confirmed.value;
+        this.selectedCountryRecoveredVal = recovered.value;
+        this.selectedCountryDeathsVal = deaths.value;
+
         this.selectedCountryConfirmed = numberWithCommas(confirmed.value);
         this.selectedCountryRecovered = numberWithCommas(recovered.value);
         this.selectedCountryDeaths = numberWithCommas(deaths.value);
