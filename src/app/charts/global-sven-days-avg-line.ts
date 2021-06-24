@@ -22,11 +22,13 @@ export default (
         data: confirmed,
         type: 'line',
         name: 'Confirmed cases',
+        color: '#ef6565',
       },
       {
         data: deaths,
         type: 'line',
         name: 'Death cases',
+        color: '#242331',
       },
     ],
     legend: {
