@@ -64,5 +64,16 @@ export default (
         type: 'bar',
       },
     ],
+    media: [
+      {
+        query: {
+          minWidth: 300,
+          minAspectRatio: 1.3,
+        },
+        option: {
+          legend: {},
+        },
+      },
+    ],
   };
 };

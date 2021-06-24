@@ -37,5 +37,29 @@ export default (
         },
       },
     ],
+    media: [
+      {
+        query: {
+          maxWidth: 640,
+        },
+        option: {
+          legend: {
+            left: 'left',
+            top: 'bottom',
+          },
+        },
+      },
+      {
+        query: {
+          maxWidth: 1200,
+        },
+        option: {
+          legend: {
+            left: 'right',
+            top: 'top',
+          },
+        },
+      },
+    ],
   };
 };

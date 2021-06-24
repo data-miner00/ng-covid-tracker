@@ -35,5 +35,29 @@ export default (
     tooltip: {
       trigger: 'axis',
     },
+    media: [
+      {
+        query: {
+          maxWidth: 640,
+        },
+        option: {
+          legend: {
+            right: 'center',
+            top: 'bottom',
+          },
+        },
+      },
+      {
+        query: {
+          maxWidth: 768,
+        },
+        option: {
+          legend: {
+            right: 'right',
+            top: 'top',
+          },
+        },
+      },
+    ],
   };
 };
