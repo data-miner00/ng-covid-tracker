@@ -4,6 +4,26 @@
     max-width: 690px
     margin: 0 auto
 
+    &__reference
+      &__item
+        cursor: pointer
+        
+        a
+          color: #363636
+          .the-title
+            transition: color .3s
+            font-weight: 700
+          .link
+            transition: color .3s
+
+        &:hover .link
+          color: #b4b4b4
+          
+        &:hover .the-title
+          color: #648DE5
+          
+
   &__img
     width: fit-content
     margin: 0 auto
+
