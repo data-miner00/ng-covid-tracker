@@ -15,9 +15,12 @@
               year-end of 2019 and continues its massacre till this day.
             </p>
             <div>
-              <button class="button is-primary is-medium">
+              <a
+                href="info/#what-can-we-do"
+                class="button is-primary is-medium"
+              >
                 Know what I can do
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -93,9 +96,7 @@
               </div>
             </div>
           </div>
-          <button class="button is-primary">
-            View stats {{ selectedCountryConfirmed }}
-          </button>
+          <button class="button is-primary">View stats</button>
         </div>
       </div>
       <div class="column is-5-desktop">
@@ -108,7 +109,7 @@
         class="column is-3-desktop"
         [heading]="'Confirmed'"
         [numberOfCases]="selectedCountryConfirmed"
-        [newCases]="4545"
+        [newCases]="selectedCountryNewConfirmed"
         [color]="'#FF9800'"
       ></app-stat-card-var>
       <app-stat-card-var
@@ -116,7 +117,7 @@
         class="column is-3-desktop"
         [heading]="'Recovered'"
         [numberOfCases]="selectedCountryRecovered"
-        [newCases]="5004"
+        [newCases]="selectedCountryNewRecovered"
         [color]="'#23e200'"
       ></app-stat-card-var>
       <app-stat-card-var
@@ -124,7 +125,7 @@
         class="column is-3-desktop"
         [heading]="'Deaths'"
         [numberOfCases]="selectedCountryDeaths"
-        [newCases]="25"
+        [newCases]="selectedCountryNewDeaths"
         [color]="'crimson'"
       ></app-stat-card-var>
     </div>
