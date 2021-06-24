@@ -7,11 +7,11 @@ export default (
 ): EChartsOption => {
   return {
     title: {
-      text: 'Daily cases for the past 7 days',
+      text: 'Daily cases for the past 4 days',
     },
     xAxis: {
       type: 'category',
-      data: ['ABC', 'BCD', 'CDF', 'JGF', 'FIF', 'IGO', 'FIF'],
+      data: dates,
     },
     yAxis: {
       type: 'value',
@@ -19,12 +19,12 @@ export default (
     },
     series: [
       {
-        data: [23, 56, 34, 76, 63, 2, 75],
+        data: confirmed,
         type: 'line',
         name: 'Confirmed cases',
       },
       {
-        data: [1, 45, 4, 2, 7, 23, 6],
+        data: deaths,
         type: 'line',
         name: 'Death cases',
       },

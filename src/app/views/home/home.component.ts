@@ -124,6 +124,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.fetchCountryData();
 
+    // set timeout for the fetchcountrydata to run first
     setTimeout(() => {
       this.selectedCountryNewConfirmed = numberWithCommas(
         this.selectedCountryConfirmedVal -
@@ -138,7 +139,65 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
     }, 3000);
 
-    this.globalLineChart = globalSvenDaysAvgLine([''], [], []);
+    const dates = [
+      getFormattedDateForAPI(2),
+      getFormattedDateForAPI(3),
+      getFormattedDateForAPI(4),
+      getFormattedDateForAPI(5),
+      getFormattedDateForAPI(6),
+    ];
+
+    let c1: number = 0,
+      d1: number = 0,
+      c2: number = 0,
+      d2: number = 0,
+      c3: number = 0,
+      d3: number = 0,
+      c4: number = 0,
+      d4: number = 0;
+
+    // this.covidApiService.getDailyAccordingDate(dates[1]).subscribe((dailys) => {
+    //   dailys.forEach((daily) => {
+    //     c1 += Number(daily.confirmed);
+    //     d1 += Number(daily.deaths);
+    //     console.log('C1: ' + c1);
+    //   });
+    // });
+
+    // this.covidApiService.getDailyAccordingDate(dates[2]).subscribe((dailys) => {
+    //   dailys.forEach((daily) => {
+    //     c2 += Number(daily.confirmed);
+    //     d2 += Number(daily.deaths);
+    //     console.log('C2: ' + c2);
+    //   });
+    // });
+
+    // this.covidApiService.getDailyAccordingDate(dates[3]).subscribe((dailys) => {
+    //   dailys.forEach((daily) => {
+    //     c3 += Number(daily.confirmed);
+    //     d3 += Number(daily.deaths);
+    //   });
+    // });
+
+    // this.covidApiService.getDailyAccordingDate(dates[4]).subscribe((dailys) => {
+    //   dailys.forEach((daily) => {
+    //     c4 += Number(daily.confirmed);
+    //     d4 += Number(daily.deaths);
+    //     console.log('C4: ' + c4);
+    //   });
+    // });
+    // setTimeout(() => {
+    //   this.globalLineChart = globalSvenDaysAvgLine(
+    //     dates.slice(0, 4).reverse(),
+    //     [
+    //       this.globalConfirmedYesterday - c1,
+    //       c1 - c2,
+    //       c2 - c3,
+    //       c3 - c4,
+    //     ].reverse(),
+    //     [this.globalDeathsYesterday - d1, d1 - d2, d2 - d3, d3 - d4].reverse()
+    //   );
+    // }, 4000);
   }
 
   onCountryChange(): void {
