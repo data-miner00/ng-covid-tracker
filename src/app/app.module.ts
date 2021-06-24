@@ -26,7 +26,6 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { StatCardVarComponent } from './components/stat-card-var/stat-card-var.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InfoComponent } from './views/info/info.component';
-import { AboutComponent } from './views/about/about.component';
 import { ComingSoonComponent } from './views/coming-soon/coming-soon.component';
 
 echarts.use([
@@ -49,7 +48,6 @@ echarts.use([
     StatCardVarComponent,
     FooterComponent,
     InfoComponent,
-    AboutComponent,
     ComingSoonComponent,
   ],
   imports: [
