@@ -4,7 +4,7 @@
   <div class="container">
     <div class="header__logo navbar-brand">
       <a
-        href=""
+        routerLink="/"
         class="navbar-item is-uppercase is-size-4 has-text-white"
         title="Home"
         >covid-19</a
@@ -17,8 +17,12 @@
     </div>
 
     <nav class="header__navs navbar-menu navbar-end" id="nav-links" #navlinks>
-      <a href="" class="header__navs__link navbar-item is-active">Home</a>
-      <a href="info" class="header__navs__link navbar-item">Information</a>
+      <a routerLink="/" class="header__navs__link navbar-item is-active"
+        >Home</a
+      >
+      <a routerLink="/info" class="header__navs__link navbar-item"
+        >Information</a
+      >
     </nav>
   </div>
 </header>
