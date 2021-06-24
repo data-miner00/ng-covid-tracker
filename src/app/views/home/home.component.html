@@ -2,13 +2,13 @@
   <div class="container">
     <div class="columns is-multiline is-vcentered">
       <div class="column is-7-desktop is-12-mobile">
-        <div class="columns">
-          <div class="column is-5">
+        <div class="columns is-multiline">
+          <div class="column is-5-tablet is-12-mobile">
             <div>
               <img id="covid-illustration" src="assets/covid.png" alt="" />
             </div>
           </div>
-          <div class="column is-7">
+          <div class="column is-7-tablet is-12-mobile">
             <h1 class="is-size-1 title">Coronavirus Alert</h1>
             <p class="subtitle mt-4 para">
               A pandemic that started wreaking havoc to earthlings since the
@@ -58,7 +58,7 @@
 <section class="section">
   <div class="container">
     <h1 class="is-size-3 has-text-centered title">Graphical Representation</h1>
-    <div class="columns is-centered graphs-container">
+    <div class="columns is-multiline is-centered graphs-container">
       <div class="column is-6-desktop is-12-mobile">
         <div echarts [options]="chartOption" class="demo-chart"></div>
       </div>
@@ -70,6 +70,17 @@
       <fa-icon [icon]="faCheckCircle" [ngStyle]="{ color: 'green' }"></fa-icon>
       <span class="is-italic ml-1">Last updated on {{ globalLastUpdate }}</span>
     </p>
+    <article class="message is-warning mx-auto mt-5" style="max-width: 700px">
+      <div class="message-body">
+        The API that supplies the data
+        <em><u>does not have a direct endpoint</u></em> to access the total
+        number for a given day but instead they provide a ginormous list of data
+        to work through. Hence, a 4-day data is shown and not more than that to
+        conserve computational power. Also, the recovered data was
+        <strong>not provided by the US</strong> and hence there is no way to
+        calculate the true recovery data.
+      </div>
+    </article>
   </div>
 </section>
 
