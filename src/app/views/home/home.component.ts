@@ -65,6 +65,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedCountryConfirmedYesterday: number;
   selectedCountryDeathsYesterday: number;
 
+  buttonLoading: boolean = false;
+
   constructor(private covidApiService: CovidApiService) {}
 
   ngOnInit(): void {
@@ -201,7 +203,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onCountryChange(): void {
-    console.log(this.selectedCountry);
+    this.buttonLoading = true;
     this.fetchCountryData();
   }
 
@@ -217,7 +219,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.selectedCountryRecovered = numberWithCommas(recovered.value);
         this.selectedCountryDeaths = numberWithCommas(deaths.value);
         this.selectedCountryLastUpdate = getFormattedDateForDisplay(lastUpdate);
-
+        this.calculateNewOffset();
         this.countryDistChart = countryDistPie(
           this.selectedCountry,
           confirmed.value,
@@ -225,6 +227,38 @@ export class HomeComponent implements OnInit, OnDestroy {
           recovered.value
         );
       });
+  }
+
+  calculateNewOffset(): void {
+    this.covidApiService
+      .getDailyAccordingDate(getFormattedDateForAPI(2))
+      .subscribe(
+        (dailys) => {
+          dailys.forEach((daily) => {
+            if (this.selectedCountry === daily.countryRegion) {
+              // this.selectedCountryConfirmedYesterday = Number(daily.confirmed);
+              // this.selectedCountryRecoveredYesterday = Number(daily.recovered);
+              // this.selectedCountryDeathsYesterday = Number(daily.deaths);
+
+              this.selectedCountryNewConfirmed = numberWithCommas(
+                this.selectedCountryConfirmedVal - Number(daily.confirmed)
+              );
+              this.selectedCountryNewRecovered = numberWithCommas(
+                this.selectedCountryRecoveredVal - Number(daily.recovered)
+              );
+              this.selectedCountryNewDeaths = numberWithCommas(
+                this.selectedCountryDeathsVal - Number(daily.deaths)
+              );
+
+              return;
+            }
+          });
+        },
+        (err): void => console.error(err),
+        (): void => {
+          this.buttonLoading = false;
+        }
+      );
   }
 
   ngOnDestroy(): void {}

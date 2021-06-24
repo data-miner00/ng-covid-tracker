@@ -96,10 +96,7 @@
           <div class="field">
             <div class="control">
               <div class="select is-dark">
-                <select
-                  [(ngModel)]="selectedCountry"
-                  (change)="onCountryChange()"
-                >
+                <select [(ngModel)]="selectedCountry">
                   <option *ngFor="let country of countries" [value]="country">
                     {{ country }}
                   </option>
@@ -107,7 +104,13 @@
               </div>
             </div>
           </div>
-          <button class="button is-primary">View stats</button>
+          <button
+            class="button is-primary"
+            [ngClass]="{ 'is-loading': buttonLoading }"
+            (click)="onCountryChange()"
+          >
+            View stats
+          </button>
         </div>
       </div>
       <div class="column is-5-desktop">
